@@ -1,0 +1,30 @@
+package m1.vueglobale;
+
+import m2.composant.PortFourni;
+import m2.composant.PortRequis;
+import m2.configuration.Attachement;
+import m2.connecteur.RoleFrom;
+import m2.connecteur.RoleTo;
+
+public class ServeurRPC extends Attachement{
+
+	protected ServeurRPC(PortFourni pF, PortRequis pR, RoleFrom rF,
+			RoleTo rT) {
+		super("ServeurRPC", pF, pR, rF, rT);
+	}
+
+	
+
+	@Override
+	public void envoyer(Object msg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Object recevoir() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
