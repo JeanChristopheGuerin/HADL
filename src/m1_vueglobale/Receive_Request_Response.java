@@ -1,5 +1,5 @@
 package m1_vueglobale;
-import composant.PortFourni;
+import configuration.PortFourni;
 public class Receive_Request_Response extends PortFourni{
 
 	public Receive_Request_Response() {

@@ -14,10 +14,11 @@ public class RPC extends Connecteur{
 
 	@Override
 	public void recevoir(Object o, RoleFrom rf) {
-		List<Object> res = new ArrayList<Object>();
-		res.add(pf.getName());
+		//TODO comprendre la signification de ça
+		/*List<Object> res = new ArrayList<Object>();
+		res.add(rf.getName());
 		res.add(msg);
-		notifyObservers(res);
+		notifyObservers(res);*/
 		
 	}
 

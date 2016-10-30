@@ -1,6 +1,6 @@
 package m1_vueglobale;
 
-import composant.PortRequis;
+import configuration.PortRequis;
 
 public class Receive_Request extends PortRequis{
 

@@ -14,14 +14,18 @@ public class ServeurRPC extends Attachement{
 		super("ServeurRPC", pF, pR, rF, rT);
 	}
 
+	
+
 	@Override
-	protected void Envoyer() {
+	public void envoyer(Object msg) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void Recevoir() {
-		
+	public Object recevoir() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

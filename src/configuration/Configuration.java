@@ -11,10 +11,12 @@ import java.util.Observer;
 
 import composantG.ComposantG;
 import composant.ComposantSimple;
+import composant.PortFourni;
+import composant.PortRequis;
 import connecteur.Connecteur;
 
 public abstract class Configuration extends ComposantG implements Observer{
-	protected List<ComposantSimple> compos = new ArrayList<ComposantSimple>();
+	protected List<ComposantG> compos = new ArrayList<ComposantG>();
 	protected List<Connecteur> connects = new ArrayList<Connecteur>();
 	protected List<Binding> bindings = new ArrayList<Binding>();
 	protected List<Attachement> attachements = new ArrayList<Attachement>();
@@ -43,7 +45,7 @@ public abstract class Configuration extends ComposantG implements Observer{
 		this.nom = name;
 	}
 
-	public List<ComposantSimple> getCompos() {
+	public List<ComposantG> getCompos() {
 		return compos;
 	}
 
@@ -80,6 +82,28 @@ public abstract class Configuration extends ComposantG implements Observer{
 
 	abstract public void update(Observable o, Object arg);
 
+	public configuration.PortRequis getPortRequis(String n){
+		for (configuration.PortRequis each:prequis){
+			if (each.getName()==n){
+				return each;
+			}
+		
+		}
+		System.out.println("Element introuvable");
+		return null;
+		
+	}
+	public configuration.PortFourni getPortFourni(String n){
+		for (configuration.PortFourni each:pfournis){
+			if (each.getName()==n){
+				return each;
+			}
+		
+		}
+		System.out.println("Element introuvable");
+		return null;
+		
+	}
 	
 	
 	

@@ -12,7 +12,7 @@ public abstract class Glue {
 		role = rF;
 	}
 	Glue(PortRequis pR, RoleTo rT){
-	port = pR;
+		port = pR;
 		role = rT;
 	}
 	 abstract void actionColler();

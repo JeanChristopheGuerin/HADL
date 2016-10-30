@@ -13,19 +13,19 @@ import composant.PortRequis;
 public class SystemeClientServeur extends Configuration{
 
 	SystemeClientServeur() {
-	super("SystemeClientServeur");
-	this.compos.add(new Client());
-	this.compos.add(new Serveur());
-	this.pfournis.add(new Systeme_PF());
-	this.connects.add(new RPC());
-	
-	ClientRPC CRPC = new ClientRPC(compos.get(0).getPortFourni("Send_Request"), compos.get(0).getPortRequis("Send_Request_Response") , connects.get(0).getRoleFrom("RPC_RoleFrom"), connects.get(0).getRoleTo("RPC_RoleTo"));
-	this.attachements.add(CRPC);
-	
-	ServeurRPC SRPC = new ServeurRPC(compos.get(1).getPortFourni("Receive_Request_Response"), compos.get(1).getPortRequis("Receive_Request") , connects.get(0).getRoleFrom("RPC_RoleFrom"), connects.get(0).getRoleTo("RPC_RoleTo"));
-	this.attachements.add(CRPC);
-	
-	SystemeClientBind SCB = new SystemeClientBind(pfournis.get(0), compos.get(0).getPortFourni("Send_Request"), (configuration.PortRequis)null, (composant.PortRequis)null);
+		super("SystemeClientServeur");
+		this.compos.add(new Client());
+		this.compos.add(new ServeurG());
+		this.pfournis.add(new Systeme_PF());
+		this.connects.add(new RPC());
+		
+		ClientRPC CRPC = new ClientRPC(((ComposantSimple) compos.get(0)).getPortFourni("Send_Request"), ((ComposantSimple) compos.get(0)).getPortRequis("Send_Request_Response") , connects.get(0).getRoleFrom("RPC_RoleFrom"), connects.get(0).getRoleTo("RPC_RoleTo"));
+		this.attachements.add(CRPC);
+		
+		ServeurRPC SRPC = new ServeurRPC(((ComposantSimple) compos.get(1)).getPortFourni("Receive_Request_Response"), ((ComposantSimple) compos.get(1)).getPortRequis("Receive_Request") , connects.get(0).getRoleFrom("RPC_RoleFrom"), connects.get(0).getRoleTo("RPC_RoleTo"));
+		this.attachements.add(CRPC);
+		
+		SystemeClientBind SCB = new SystemeClientBind(pfournis.get(0), ((ComposantSimple) compos.get(0)).getPortFourni("Send_Request"), (configuration.PortRequis)null, (composant.PortRequis)null);
 	}
 
 	@Override

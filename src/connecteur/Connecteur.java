@@ -3,8 +3,7 @@ package connecteur;
 import java.util.ArrayList;
 import java.util.List;
 
-import composant.PortFourni;
-import composant.PortRequis;
+
 import composantG.ComposantG;
 
 public abstract class Connecteur extends ComposantG {
