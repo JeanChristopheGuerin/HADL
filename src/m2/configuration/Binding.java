@@ -8,7 +8,7 @@ public abstract class Binding {
 	private PortRequis portR;
 	private m2.composant.PortFourni portFComp;
 	private m2.composant.PortRequis portRComp;
-	protected Binding(String nom, PortFourni pF1,m2.composant.PortFourni pF2, PortRequis pR1,m2.composant.PortRequis pR2){
+	public Binding(String nom, PortFourni pF1,m2.composant.PortFourni pF2, PortRequis pR1,m2.composant.PortRequis pR2){
 		portF = pF1;
 		portR = pR1;
 		portFComp = pF2;
