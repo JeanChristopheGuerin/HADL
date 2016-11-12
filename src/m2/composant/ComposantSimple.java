@@ -35,4 +35,6 @@ public abstract class ComposantSimple extends ComposantG{
 		
 	}
 	abstract protected void envoi(Object msg,PortFourni pf);
+	public abstract void recevoir(String msg, PortRequis portR);
+
 }

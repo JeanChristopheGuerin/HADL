@@ -6,13 +6,12 @@ import java.util.Observable;
 import java.util.Observer;
 
 import m2.composant.ComposantSimple;
-import m2.composant.PortFourni;
-import m2.composant.PortRequis;
 import m2.composantG.ComposantG;
 import m2.connecteur.Connecteur;
 
 public abstract class Configuration extends ComposantG implements Observer{
-	protected List<ComposantG> compos = new ArrayList<ComposantG>();
+	protected List<ComposantSimple> compos = new ArrayList<ComposantSimple>();
+	protected List<Configuration> conf = new ArrayList<Configuration>();
 	protected List<Connecteur> connects = new ArrayList<Connecteur>();
 	protected List<Binding> bindings = new ArrayList<Binding>();
 	protected List<Attachement> attachements = new ArrayList<Attachement>();
@@ -41,8 +40,16 @@ public abstract class Configuration extends ComposantG implements Observer{
 		this.nom = name;
 	}
 
-	public List<ComposantG> getCompos() {
+	public List<ComposantSimple> getCompos() {
 		return compos;
+	}
+
+	public List<Configuration> getConf() {
+		return conf;
+	}
+
+	public void setConf(List<Configuration> conf) {
+		this.conf = conf;
 	}
 
 	public void addCompos(ComposantSimple compo) {

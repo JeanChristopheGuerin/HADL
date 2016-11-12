@@ -4,6 +4,7 @@ import java.util.List;
 
 import m2.composant.ComposantSimple;
 import m2.composant.PortFourni;
+import m2.composant.PortRequis;
 
 public class Client extends ComposantSimple{
 
@@ -21,6 +22,12 @@ public class Client extends ComposantSimple{
 		res.add(pf.getName());
 		res.add(msg);
 		notifyObservers(res);
+		
+	}
+
+	@Override
+	public void recevoir(String msg, PortRequis portR) {
+		// TODO Auto-generated method stub
 		
 	}
 	
