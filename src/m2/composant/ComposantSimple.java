@@ -34,7 +34,11 @@ public abstract class ComposantSimple extends ComposantG{
 		return null;
 		
 	}
-	abstract protected void envoi(Object msg,PortFourni pf);
-	public abstract void recevoir(String msg, PortRequis portR);
+	 protected abstract void envoi(Object msg,PortFourni pf);
+	public abstract void recevoir(Object msg, PortRequis portR);
+	public void recevoir(String msg, m2.composant.PortFourni pf) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

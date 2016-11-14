@@ -18,7 +18,7 @@ public class DataBase extends ComposantSimple{
 	}
 
 	@Override
-	public void recevoir(String msg, PortRequis portR) {
+	public void recevoir(Object msg, PortRequis portR) {
 		// TODO Auto-generated method stub
 		
 	}

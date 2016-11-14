@@ -11,7 +11,7 @@ public abstract class Attachement {
 	private m2.composant.PortRequis portR;
 	private RoleFrom roleFrom;
 	private RoleTo roleTo;
-	protected Attachement(String nom, m2.composant.PortFourni pF,m2.composant.PortRequis pR, RoleFrom rF, RoleTo rT){
+	protected Attachement(String nom, PortFourni pF,PortRequis pR, RoleFrom rF, RoleTo rT){
 		portF = pF;
 		portR = pR;
 		roleFrom = rF;
@@ -29,13 +29,13 @@ public abstract class Attachement {
 	public m2.composant.PortFourni getPortF() {
 		return portF;
 	}
-	public void setPortF(m2.composant.PortFourni portF) {
+	public void setPortF(PortFourni portF) {
 		this.portF = portF;
 	}
-	public m2.composant.PortRequis getPortR() {
+	public PortRequis getPortR() {
 		return portR;
 	}
-	public void setPortR(m2.composant.PortRequis portR) {
+	public void setPortR(PortRequis portR) {
 		this.portR = portR;
 	}
 	public RoleFrom getRoleFrom() {

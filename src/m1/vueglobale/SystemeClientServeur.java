@@ -2,12 +2,14 @@ package m1.vueglobale;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import m1.serveur.Serveur;
+
 import m2.composant.ComposantSimple;
-import m2.composant.PortFourni;
-import m2.composant.PortRequis;
+
 import m2.configuration.Attachement;
+import m2.configuration.Binding;
 import m2.configuration.Configuration;
+import m2.configuration.PortFourni;
+import m2.configuration.PortRequis;
 import m2.connecteur.Connecteur;
 import m2.connecteur.RoleFrom;
 
@@ -15,10 +17,12 @@ public class SystemeClientServeur extends Configuration{
 
 	public SystemeClientServeur() {
 		super("SystemeClientServeur");
-		this.compos.add(new Client());
-		this.conf.add(new ServeurG());
-		this.pfournis.add(new Systeme_PF());
-		this.connects.add(new RPC());
+		
+	
+		this.addCompos(new Client());
+		this.addConf(new ServeurG());
+		this.addPfournis(new Systeme_PF());
+		this.addConnects(new RPC());
 		
 		ClientRPC CRPC = new ClientRPC(((ComposantSimple) compos.get(0)).getPortFourni("Send_Request"), ((ComposantSimple) compos.get(0)).getPortRequis("Send_Request_Response") , connects.get(0).getRoleFrom("RPC_RoleFrom"), connects.get(0).getRoleTo("RPC_RoleTo"));
 		this.attachements.add(CRPC);
@@ -68,8 +72,41 @@ public class SystemeClientServeur extends Configuration{
 			}
 			
 		}else if(o instanceof Configuration){
-			
+			m2.composant.PortFourni pf = null;
+			m2.composant.PortRequis pr = null;
+			for(Binding each: this.bindings){
+				if(each.getPortF().getName() == nomPort){
+					pf = each.getPortFComp();
+				}else if(each.getPortR().getName() == nomPort){
+					pr = each.getPortRComp();
+				}
+			}
+			if(pf != null){
+				for(ComposantSimple each : this.compos){
+					if (each.getPortRequis(pf.getName())!=null){
+						each.recevoir(msg, pf);
+					}
+				}
+			}else if (pr != null){
+				for(ComposantSimple each : this.compos){
+					if (each.getPortRequis(pr.getName())!=null){
+						each.recevoir(msg, pr);
+					}
+				}
+			}
 		}
+		
+	}
+
+	@Override
+	public void recevoir(Object msg, PortRequis pr) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void envoyer(Object msg, PortFourni pf) {
+		// TODO Auto-generated method stub
 		
 	}
 	

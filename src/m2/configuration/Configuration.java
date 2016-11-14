@@ -21,37 +21,19 @@ public abstract class Configuration extends ComposantG implements Observer{
 	protected List<m2.configuration.PortFourni> pfournis = new ArrayList<m2.configuration.PortFourni>();
 	protected List<m2.configuration.PortRequis> prequis = new ArrayList<m2.configuration.PortRequis>();
 	
-	public List<m2.configuration.PortFourni> getPfournis() {
-		return pfournis;
+	protected Configuration(String name){
+		this.nom = name;
 	}
 
+	//////////////////////
+	
 	public void addPfournis(m2.configuration.PortFourni pfournis) {
 		this.pfournis.add(pfournis);
 		
 	}
 
-	public List<m2.configuration.PortRequis> getPrequis() {
-		return prequis;
-	}
-
 	public void addPrequis(m2.configuration.PortRequis prequis) {
 		this.prequis.add(prequis);
-	}
-
-	protected Configuration(String name){
-		this.nom = name;
-	}
-
-	public List<ComposantSimple> getCompos() {
-		return compos;
-	}
-
-	public List<Configuration> getConf() {
-		return conf;
-	}
-
-	public void setConf(List<Configuration> conf) {
-		this.conf = conf;
 	}
 
 	public void addCompos(ComposantSimple compo) {
@@ -59,15 +41,51 @@ public abstract class Configuration extends ComposantG implements Observer{
 		compo.addObserver(this);
 	}
 
-	public List<Connecteur> getConnects() {
-		return connects;
-	}
-
 	public void addConnects(Connecteur connect) {
 		connect.addObserver(this);
 		this.connects.add(connect);
 		
 	}
+	public void addConf(Configuration conf){
+		conf.addObserver(this);
+		this.conf.add(conf);
+	}
+	
+	
+	//////////////////////
+	
+	public void addAllPfournis(List<m2.configuration.PortFourni> pfournis) {
+		this.pfournis.addAll(pfournis);
+		
+	}
+
+	public void addAllPrequis(List<m2.configuration.PortRequis> prequis) {
+		this.prequis.addAll(prequis);
+	}
+
+	public void addAllCompos(List<ComposantSimple> compo) {
+		this.compos.addAll(compo);
+		for (ComposantSimple each : compo){
+			each.addObserver(this);
+		}
+	}
+
+	public void addAllConnects(List<Connecteur> connect) {
+		this.connects.addAll(connect);
+		for(Connecteur each : connect){
+			each.addObserver(this);
+		}
+	}
+	
+	public void addAllConf(List<Configuration> conf){
+		this.conf.addAll(conf);
+		for (Configuration each : conf){
+			each.addObserver(this);
+		}
+	}
+	
+
+	//////////////////////
 
 	public List<Binding> getBindings() {
 		return bindings;
@@ -84,8 +102,21 @@ public abstract class Configuration extends ComposantG implements Observer{
 	public void addAttachements(Attachement attachement) {
 		this.attachements.add(attachement);
 	}
-
+	
+	//////////////////////
 	abstract public void update(Observable o, Object arg);
+
+	public List<ComposantSimple> getCompos() {
+		return compos;
+	}
+
+	public List<Configuration> getConf() {
+		return conf;
+	}
+
+	public List<Connecteur> getConnects() {
+		return connects;
+	}
 
 	public m2.configuration.PortRequis getPortRequis(String n){
 		for (m2.configuration.PortRequis each:prequis){
@@ -110,7 +141,8 @@ public abstract class Configuration extends ComposantG implements Observer{
 		
 	}
 	
-	
+	public abstract void recevoir(Object msg,PortRequis pr);
+	public abstract void envoyer(Object msg,PortFourni pf);
 	
 	
 	

@@ -27,10 +27,13 @@ public class Client extends ComposantSimple{
 	}
 
 	@Override
-	public void recevoir(String msg, PortRequis portR) {
+	public void recevoir(Object msg, PortRequis portR) {
 		// TODO Auto-generated method stub
 		
 	}
 	
+	public void envoiServeur(Object msg){
+		envoi(msg,pfournis.get(0));
+	}
 
 }
