@@ -8,7 +8,7 @@ import m2.composant.PortRequis;
 
 public class Client extends ComposantSimple{
 
-	protected Client() {
+	public Client() {
 		super("Client");
 		Send_Request SR = new Send_Request();
 		Send_Request_Response SRR = new Send_Request_Response();
@@ -17,11 +17,12 @@ public class Client extends ComposantSimple{
 	}
 
 	@Override
-	protected void envoi(Object msg, PortFourni pf) {
+	public void envoi(Object msg, PortFourni pf) {
 		List<Object> res = new ArrayList<Object>();
 		res.add(pf.getName());
 		res.add(msg);
 		notifyObservers(res);
+		System.out.println( this.nom+" sending "+ msg +" to " +pf.getName());
 		
 	}
 

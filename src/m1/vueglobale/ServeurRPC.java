@@ -1,12 +1,12 @@
 package m1.vueglobale;
 
-import m2.composant.PortFourni;
-import m2.composant.PortRequis;
-import m2.configuration.Attachement;
+import m2.configuration.PortFourni;
+import m2.configuration.PortRequis;
+import m2.configuration.AttachementConf;
 import m2.connecteur.RoleFrom;
 import m2.connecteur.RoleTo;
 
-public class ServeurRPC extends Attachement{
+public class ServeurRPC extends AttachementConf{
 
 	protected ServeurRPC(PortFourni pF, PortRequis pR, RoleFrom rF,
 			RoleTo rT) {

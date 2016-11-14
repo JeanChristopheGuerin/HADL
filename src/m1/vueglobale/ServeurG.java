@@ -17,8 +17,8 @@ public class ServeurG extends Configuration{
 		this.pfournis.add(new Receive_Request_Response());
 		this.prequis.add(new Receive_Request());
 		
-		ServeurGServeurBind SSB = new ServeurGServeurBind(pfournis.get(0), ((ComposantSimple) compos.get(0)).getPortFourni("ClientQueryRequest"),prequis.get(0), ((ComposantSimple) compos.get(0)).getPortRequis("ClientQueryResponse")); 
-		this.bindings.add(SSB);
+		ServeurGServeurBind SSB = new ServeurGServeurBind(pfournis.get(0),  conf.get(0).getPortFourni("ClientQueryRequest"),prequis.get(0), conf.get(0).getPortRequis("ClientQueryResponse")); 
+		this.bindingsConf.add(SSB);
 	}
 
 	@Override

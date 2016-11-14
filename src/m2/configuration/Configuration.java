@@ -14,7 +14,9 @@ public abstract class Configuration extends ComposantG implements Observer{
 	protected List<Configuration> conf = new ArrayList<Configuration>();
 	protected List<Connecteur> connects = new ArrayList<Connecteur>();
 	protected List<Binding> bindings = new ArrayList<Binding>();
+	protected List<BindingConf> bindingsConf = new ArrayList<BindingConf>();
 	protected List<Attachement> attachements = new ArrayList<Attachement>();
+	protected List<AttachementConf> attachementsConf = new ArrayList<AttachementConf>();
 	
 	protected List<m2.configuration.PortFourni> pfournis = new ArrayList<m2.configuration.PortFourni>();
 	protected List<m2.configuration.PortRequis> prequis = new ArrayList<m2.configuration.PortRequis>();
