@@ -27,13 +27,10 @@ public class SystemeClientServeur extends Configuration{
 		this.attachements.add(CRPC);
 		
 		ServeurRPC SRPC = new ServeurRPC( conf.get(0).getPortFourni("Receive_Request_Response"),  conf.get(0).getPortRequis("Receive_Request") , connects.get(0).getRoleFrom("RPC_RoleFrom"), connects.get(0).getRoleTo("RPC_RoleTo"));
-		this.attachements.add(CRPC);
+		this.attachementsConf.add(SRPC);
 		
 		SystemeClientBind SCB = new SystemeClientBind(pfournis.get(0), ((ComposantSimple) compos.get(0)).getPortFourni("Send_Request"), (m2.configuration.PortRequis)null, (m2.composant.PortRequis)null);
-		
-		attachements.add(CRPC);
-		attachementsConf.add(SRPC);
-		bindings.add(SCB);
+		this.bindings.add(SCB);
 	}
 
 	@Override
