@@ -39,6 +39,7 @@ public class SystemeClientServeur extends Configuration{
 
 	@Override
 	public void update(Observable o, Object arg) {
+		System.out.println("Un message a ete envoye");
 		@SuppressWarnings("unchecked")
 		ArrayList<String> portMsg = (ArrayList<String>)arg;
 		String nomPort = portMsg.get(0);
@@ -46,8 +47,10 @@ public class SystemeClientServeur extends Configuration{
 		
 		if(o instanceof ComposantSimple ){
 			RoleFrom rolef = null;
+			System.out.println("L'objet est un composant simple");
 			for(Attachement each : this.attachements){
 				if(each.getPortF().getName() == nomPort){
+					System.out.println("L'attachement est sur "+ each.nom);
 					rolef = each.getRoleFrom();
 				}
 			}
@@ -58,7 +61,7 @@ public class SystemeClientServeur extends Configuration{
 			}
 			
 		}else if(o instanceof Connecteur){
-			
+			System.out.println("L'objet est un connecteur");
 			m2.composant.PortRequis portR = null;
 			for(Attachement each : this.attachements){
 				if(each.getPortF().getName() == nomPort){
@@ -72,6 +75,7 @@ public class SystemeClientServeur extends Configuration{
 			}
 			
 		}else if(o instanceof Configuration){
+			System.out.println("L'objet est une config");
 			m2.composant.PortFourni pf = null;
 			m2.composant.PortRequis pr = null;
 			for(Binding each: this.bindings){

@@ -47,7 +47,7 @@ public class Serveur extends Configuration{
 				new SecurityQuery())
 				));
 		
-		ServeurConnectionManagerBind SCMB = new ServeurConnectionManagerBind(pfournis.get(0),((ComposantSimple) compos.get(0)).getPortFourni("ExternalSocketSecurityRequest"), prequis.get(0),((ComposantSimple) compos.get(0)).getPortRequis("ExternalSocketSecurityRequestResponse"));	
+		ServeurConnectionManagerBind SCMB = new ServeurConnectionManagerBind(pfournis.get(0),((ComposantSimple) compos.get(0)).getPortFourni("ExternalSocketSecurityRequest"), prequis.get(0),((ComposantSimple) compos.get(0)).getPortRequis("ExternalSocketSecurityResponse"));	
 		this.bindings.add(SCMB);
 		
 		

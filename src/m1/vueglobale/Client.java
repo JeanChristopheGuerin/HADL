@@ -21,7 +21,7 @@ public class Client extends ComposantSimple{
 		List<Object> res = new ArrayList<Object>();
 		res.add(pf.getName());
 		res.add(msg);
-		notifyObservers(res);
+		notifyObservers((Object)res);
 		System.out.println( this.nom+" sending "+ msg +" to " +pf.getName());
 		
 	}

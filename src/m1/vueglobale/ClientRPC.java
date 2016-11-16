@@ -21,7 +21,7 @@ public class ClientRPC extends Attachement{
 
 	@Override
 	public Object recevoir() {
-		// TODO Auto-generated method stub
+		System.out.println(this.nom + " reçoit un message");
 		return null;
 	}
 

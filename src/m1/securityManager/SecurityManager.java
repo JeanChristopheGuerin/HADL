@@ -22,7 +22,7 @@ public class SecurityManager extends ComposantSimple {
 	}
 
 	@Override
-	protected void envoi(Object msg, PortFourni pf) {
+	public void envoi(Object msg, PortFourni pf) {
 		// TODO Auto-generated method stub
 		
 	}

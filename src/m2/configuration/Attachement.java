@@ -6,7 +6,7 @@ import m2.composant.PortRequis;
 import m2.connecteur.RoleFrom;
 import m2.connecteur.RoleTo;
 public abstract class Attachement {
-	String nom;
+	public String nom;
 	private m2.composant.PortFourni portF;
 	private m2.composant.PortRequis portR;
 	private RoleFrom roleFrom;

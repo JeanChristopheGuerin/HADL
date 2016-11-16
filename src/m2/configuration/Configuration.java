@@ -37,18 +37,21 @@ public abstract class Configuration extends ComposantG implements Observer{
 	}
 
 	public void addCompos(ComposantSimple compo) {
-		this.compos.add(compo);
 		compo.addObserver(this);
+		this.compos.add(compo);
+		
 	}
 
 	public void addConnects(Connecteur connect) {
-		connect.addObserver(this);
 		this.connects.add(connect);
+		connect.addObserver(this);
+		
 		
 	}
 	public void addConf(Configuration conf){
-		conf.addObserver(this);
 		this.conf.add(conf);
+		conf.addObserver(this);
+		
 	}
 	
 	

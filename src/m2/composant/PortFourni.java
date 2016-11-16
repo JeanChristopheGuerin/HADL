@@ -1,7 +1,7 @@
 package m2.composant;
 
 public abstract class PortFourni implements InterfaceComp {
-	private String name;
+	public String name;
 	
 	public PortFourni(String n){
 		name=n;

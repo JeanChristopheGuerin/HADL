@@ -6,9 +6,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		SystemeClientServeur SCM = new SystemeClientServeur();
-		Client C= (Client) SCM.getCompos().get(0);
-		C.envoi("test", C.getPortFourni("Send_Request"));
-
+		SCM.getCompos().get(0).envoi("test", SCM.getCompos().get(0).getPortFourni("Send_Request"));
+		System.out.println(SCM.getCompos().get(0).getPortFourni("Send_Request").name);
 	}
 
 }
