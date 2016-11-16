@@ -21,11 +21,14 @@ public class Client extends ComposantSimple{
 		List<Object> res = new ArrayList<Object>();
 		res.add(pf.getName());
 		res.add(msg);
+		System.out.println(this.nom+" sending "+ msg +" to " +pf.getName());
+		
+		setChanged();
 		notifyObservers((Object)res);
-		System.out.println( this.nom+" sending "+ msg +" to " +pf.getName());
+		
 		
 	}
-
+	
 	@Override
 	public void recevoir(Object msg, PortRequis portR) {
 		// TODO Auto-generated method stub

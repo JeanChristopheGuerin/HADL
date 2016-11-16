@@ -21,7 +21,7 @@ public abstract class Configuration extends ComposantG implements Observer{
 	protected List<m2.configuration.PortFourni> pfournis = new ArrayList<m2.configuration.PortFourni>();
 	protected List<m2.configuration.PortRequis> prequis = new ArrayList<m2.configuration.PortRequis>();
 	
-	protected Configuration(String name){
+	public Configuration(String name){
 		this.nom = name;
 	}
 
@@ -43,14 +43,16 @@ public abstract class Configuration extends ComposantG implements Observer{
 	}
 
 	public void addConnects(Connecteur connect) {
-		this.connects.add(connect);
 		connect.addObserver(this);
+		this.connects.add(connect);
+		
 		
 		
 	}
 	public void addConf(Configuration conf){
-		this.conf.add(conf);
 		conf.addObserver(this);
+		this.conf.add(conf);
+		
 		
 	}
 	

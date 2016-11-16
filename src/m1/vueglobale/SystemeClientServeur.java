@@ -2,9 +2,8 @@ package m1.vueglobale;
 import java.util.ArrayList;
 import java.util.Observable;
 
-
 import m2.composant.ComposantSimple;
-
+import m2.composantG.ComposantG;
 import m2.configuration.Attachement;
 import m2.configuration.Binding;
 import m2.configuration.Configuration;
@@ -39,18 +38,17 @@ public class SystemeClientServeur extends Configuration{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("Un message a ete envoye");
 		@SuppressWarnings("unchecked")
 		ArrayList<String> portMsg = (ArrayList<String>)arg;
 		String nomPort = portMsg.get(0);
 		String msg = portMsg.get(1);
-		
 		if(o instanceof ComposantSimple ){
 			RoleFrom rolef = null;
 			System.out.println("L'objet est un composant simple");
 			for(Attachement each : this.attachements){
 				if(each.getPortF().getName() == nomPort){
-					System.out.println("L'attachement est sur "+ each.nom);
+					
+					System.out.println("envoi "+msg +" au connecteur"+ each.nom);
 					rolef = each.getRoleFrom();
 				}
 			}
