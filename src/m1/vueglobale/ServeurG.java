@@ -23,7 +23,7 @@ public class ServeurG extends Configuration{
 		this.prequis.add(new Receive_Request());
 		
 		ServeurGServeurBind SSB = new ServeurGServeurBind(pfournis.get(0),  conf.get(0).getPortFourni("ClientQueryRequest"),prequis.get(0), conf.get(0).getPortRequis("ClientQueryResponse")); 
-		this.bindingsConf.add(SSB);
+		this.bindings.add(SSB);
 
 	}
 
@@ -91,12 +91,24 @@ public class ServeurG extends Configuration{
 
 	@Override
 	public void recevoir(Object msg, PortRequis pr) {
-		// TODO Auto-generated method stub
+		System.out.println("Message "+ (String)msg +" reçut sur le port "+ pr.getName());
 		
 	}
 
 	@Override
 	public void envoyer(Object msg, PortFourni pf) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void recevoir(Object msg, PortFourni pf) {
+		System.out.println("Message "+ (String)msg +" reçut sur le port "+ pf.getName());
+		
+	}
+
+	@Override
+	public void envoyer(Object msg, PortRequis pr) {
 		// TODO Auto-generated method stub
 		
 	}

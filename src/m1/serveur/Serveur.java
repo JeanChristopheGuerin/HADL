@@ -106,6 +106,18 @@ public class Serveur extends Configuration{
 
 		
 	}
+
+	@Override
+	public void recevoir(Object msg, PortFourni portFConf) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void envoyer(Object msg, PortRequis pr) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

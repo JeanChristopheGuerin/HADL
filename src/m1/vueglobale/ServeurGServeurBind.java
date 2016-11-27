@@ -1,10 +1,11 @@
 package m1.vueglobale;
 
-import m2.configuration.BindingConf;
+import m2.configuration.Binding;
+
 import m2.configuration.PortFourni;
 import m2.configuration.PortRequis;
 
-public class ServeurGServeurBind extends BindingConf{
+public class ServeurGServeurBind extends Binding{
 
 	public ServeurGServeurBind( PortFourni pF1,
 			PortFourni pF2, PortRequis pR1,

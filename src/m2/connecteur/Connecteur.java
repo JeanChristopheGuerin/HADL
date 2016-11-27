@@ -45,5 +45,5 @@ public abstract class Connecteur extends ComposantG {
 	}
 	
 	public abstract void recevoir(Object o,RoleFrom rf);
-
+	public abstract void envoyer(Object o, RoleTo rt);
 }

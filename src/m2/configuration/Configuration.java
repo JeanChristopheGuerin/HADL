@@ -147,7 +147,12 @@ public abstract class Configuration extends ComposantG implements Observer{
 	}
 	
 	public abstract void recevoir(Object msg,PortRequis pr);
+	public abstract void recevoir(Object msg, PortFourni portFConf);
+	
 	public abstract void envoyer(Object msg,PortFourni pf);
+	public abstract void envoyer(Object msg,PortRequis pr);
+
+
 	
 	
 	

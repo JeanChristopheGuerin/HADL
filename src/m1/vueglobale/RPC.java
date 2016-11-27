@@ -4,6 +4,7 @@ import java.util.List;
 
 import m2.connecteur.Connecteur;
 import m2.connecteur.RoleFrom;
+import m2.connecteur.RoleTo;
 public class RPC extends Connecteur{
 
 	RPC() {
@@ -14,11 +15,23 @@ public class RPC extends Connecteur{
 
 	@Override
 	public void recevoir(Object o, RoleFrom rf) {
-		//TODO comprendre la signification de ça
-		/*List<Object> res = new ArrayList<Object>();
-		res.add(rf.getName());
-		res.add(msg);
-		notifyObservers(res);*/
+		
+		System.out.println("Message "+ (String)o +" reçut sur le port "+ rf.getName());
+		/*
+		Traitement avec la glue quand on le reçoit
+		*/
+		envoyer(o,rto.get(0));
+	}
+
+	@Override
+	public void envoyer(Object o, RoleTo rt) {
+		List<Object> res = new ArrayList<Object>();
+		res.add(rt.getName());
+		res.add(o);
+		System.out.println(this.nom+" sending "+ (String)o +" to " +rt.getName());
+		
+		setChanged();
+		notifyObservers((Object)res);
 		
 	}
 
