@@ -39,4 +39,10 @@ public class Client extends ComposantSimple{
 		envoi(msg,pfournis.get(0));
 	}
 
+	@Override
+	public void recevoir(String msg, PortFourni pf) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

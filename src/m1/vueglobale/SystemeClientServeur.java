@@ -25,7 +25,7 @@ public class SystemeClientServeur extends Configuration{
 		ClientRPC CRPC = new ClientRPC(((ComposantSimple) compos.get(0)).getPortFourni("Send_Request"), ((ComposantSimple) compos.get(0)).getPortRequis("Send_Request_Response") , connects.get(0).getRoleFrom("RPC_RoleFrom"), connects.get(0).getRoleTo("RPC_RoleTo"));
 		this.attachements.add(CRPC);
 		
-		ServeurRPC SRPC = new ServeurRPC( conf.get(0).getPortFourni("Receive_Request_Response"),  conf.get(0).getPortRequis("Receive_Request") , connects.get(0).getRoleFrom("RPC_RoleFrom"), connects.get(0).getRoleTo("RPC_RoleTo"));
+		ServeurRPC SRPC = new ServeurRPC( conf.get(0).getPortFourni("Receive_Request"),  conf.get(0).getPortRequis("Receive_Response") , connects.get(0).getRoleFrom("RPC_RoleFrom"), connects.get(0).getRoleTo("RPC_RoleTo"));
 		this.attachements.add(SRPC);
 		
 		SystemeClientBind SCB = new SystemeClientBind(pfournis.get(0), ((ComposantSimple) compos.get(0)).getPortFourni("Send_Request"), (m2.configuration.PortRequis)null, (m2.composant.PortRequis)null);
@@ -45,7 +45,7 @@ public class SystemeClientServeur extends Configuration{
 			RoleFrom rolef = null;
 			m2.configuration.PortFourni portFConf = null;
 			m2.configuration.PortRequis portRConf = null;
-			System.out.println("L'objet est un composant simple");
+			
 			/////On regarde si c'est vers un connecteur
 			for(Attachement each : this.attachements){
 				if(each.getPortF() != null){
@@ -73,7 +73,7 @@ public class SystemeClientServeur extends Configuration{
 				
 				for(Connecteur each : this.connects){
 					if (each.getRoleFrom(rolef.getName())!=null){
-						System.out.println(each.getNom());
+						
 						each.recevoir(msg, rolef);
 						
 					}
@@ -101,7 +101,7 @@ public class SystemeClientServeur extends Configuration{
 			
 		/////////////////////////////// Un connecteur notifie l'observer	
 		}else if(o instanceof Connecteur){
-			System.out.println("L'objet est un connecteur");
+			
 			m2.composant.PortRequis portR = null;
 			m2.configuration.PortRequis portRConf = null;
 			///On regarde si c'est vers un composant simple
@@ -118,7 +118,7 @@ public class SystemeClientServeur extends Configuration{
 				
 				for(Attachement each : this.attachements){
 					if(each.getRoleTo() != null){
-						System.out.println(each.getRoleTo().getName());
+						
 						if(each.getRoleTo().getName() == nomPort){
 							
 							portRConf = each.getPortRConf();
@@ -146,7 +146,7 @@ public class SystemeClientServeur extends Configuration{
 			
 		/////////////////////////////// Une configuration notifie l'observer	
 		}else if(o instanceof Configuration){
-			System.out.println("L'objet est une config");
+			
 			m2.composant.PortFourni pf = null;
 			m2.composant.PortRequis pr = null;
 			m2.configuration.PortFourni pfConf = null;

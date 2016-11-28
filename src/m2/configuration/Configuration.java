@@ -125,12 +125,13 @@ public abstract class Configuration extends ComposantG implements Observer{
 
 	public m2.configuration.PortRequis getPortRequis(String n){
 		for (m2.configuration.PortRequis each:prequis){
+			
 			if (each.getName()==n){
 				return each;
 			}
 		
 		}
-		System.out.println("Element introuvable");
+		System.out.println("Element introuvable "+n);
 		return null;
 		
 	}
@@ -141,7 +142,7 @@ public abstract class Configuration extends ComposantG implements Observer{
 			}
 		
 		}
-		System.out.println("Element introuvable");
+		System.out.println("Element introuvable "+n);
 		return null;
 		
 	}
