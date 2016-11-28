@@ -1,9 +1,9 @@
 package m1.dataBase;
 
 
-import m2.composant.PortRequis;
+import m2.composant.PortFourni;
 
-public class QueryInterrogationRequest extends PortRequis{
+public class QueryInterrogationRequest extends PortFourni{
 
 	public QueryInterrogationRequest() {
 		super("QueryInterrogationRequest");

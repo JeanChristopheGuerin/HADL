@@ -96,7 +96,7 @@ public class SystemeClientServeur extends Configuration{
 				}
 			}
 			else{
-				System.out.println("Probleme envoie vers port qui n'est relié à rien ");
+				System.out.println("Probleme envoie vers port qui n'est relie a rien ");
 			}
 			
 		/////////////////////////////// Un connecteur notifie l'observer	
@@ -141,7 +141,7 @@ public class SystemeClientServeur extends Configuration{
 					}
 				}
 			}else{
-				System.out.println("Probleme envoie vers port qui n'est relié à rien");
+				System.out.println("Probleme envoi vers port qui n'est relie a rien");
 			}
 			
 		/////////////////////////////// Une configuration notifie l'observer	
@@ -152,7 +152,7 @@ public class SystemeClientServeur extends Configuration{
 			m2.configuration.PortFourni pfConf = null;
 			m2.configuration.PortRequis prConf = null;
 			
-			////On regarde si ça va vers un comosant
+			////On regarde si ï¿½a va vers un comosant
 			for(Binding each: this.bindings){
 				if(each.getPortF().getName() == nomPort){
 					pf = each.getPortFComp();
@@ -173,7 +173,7 @@ public class SystemeClientServeur extends Configuration{
 					}
 				}
 			}
-			////Sinon ça va vers une configuration
+			////Sinon ï¿½a va vers une configuration
 			if (pf == null && pr == null){
 				for(Binding each : this.bindings){
 					if(each.getPortF().getName() == nomPort){
@@ -203,7 +203,7 @@ public class SystemeClientServeur extends Configuration{
 	
 	@Override
 	public void recevoir(Object msg, PortFourni pf) {
-		System.out.println("Message "+ (String)msg +" reçut sur le port "+ pf.getName());
+		System.out.println("Message "+ (String)msg +" recu sur le port "+ pf.getName());
 	}
 	
 	@Override
@@ -220,6 +220,18 @@ public class SystemeClientServeur extends Configuration{
 
 	@Override
 	public void envoyer(Object msg, PortRequis pr) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void recevoir(Object msg, m2.composant.PortRequis pr) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void recevoir(Object msg, m2.composant.PortFourni portFConf) {
 		// TODO Auto-generated method stub
 		
 	}

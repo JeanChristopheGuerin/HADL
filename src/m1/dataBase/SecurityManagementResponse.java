@@ -1,8 +1,8 @@
 package m1.dataBase;
 
-import m2.composant.PortFourni;
+import m2.composant.PortRequis;
 
-public class SecurityManagementResponse extends PortFourni {
+public class SecurityManagementResponse extends PortRequis {
 
 	public SecurityManagementResponse() {
 		super("SecurityManagementResponse");

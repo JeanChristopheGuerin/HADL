@@ -8,7 +8,7 @@ public class Main {
 		
 		SystemeClientServeur SCM = new SystemeClientServeur();
 		
-		SCM.getCompos().get(0).envoi("test", SCM.getCompos().get(0).getPortFourni("Send_Request"));
+		SCM.getCompos().get(0).envoi("toto", SCM.getCompos().get(0).getPortFourni("Send_Request"));
 		
 	}
 

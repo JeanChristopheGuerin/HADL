@@ -19,7 +19,7 @@ public abstract class ComposantSimple extends ComposantG{
 			}
 		
 		}
-		System.out.println("Port Requis introuvable dans "+ nom);
+
 		return null;
 		
 	}
@@ -30,12 +30,13 @@ public abstract class ComposantSimple extends ComposantG{
 			}
 		
 		}
-		System.out.println("Port Fourni introuvable dans "+ nom);
+
 		return null;
 		
 	}
 	 public abstract void envoi(Object msg,PortFourni pf);
 	public abstract void recevoir(Object msg, PortRequis portR);
-	public abstract void recevoir(String msg, m2.composant.PortFourni pf);
+	public abstract void recevoir(Object msg, m2.composant.PortFourni prComp);
+
 
 }

@@ -12,10 +12,11 @@ public class SecurityManager extends ComposantSimple {
 	public SecurityManager() {
 		super("SecurityManager");
 
-		this.pfournis.addAll(Arrays.asList(new ConnectionQuery())
+		this.pfournis.addAll(Arrays.asList(new ConnectionQuery(),
+				new SecurityAuthentification())
 				);
 		this.prequis.addAll(Arrays.asList(new ConnectionQueryResponse(),
-				new SecurityAuthentification())
+				new SecurityAuthentificationResponse())
 				);
 		
 
@@ -34,8 +35,10 @@ public class SecurityManager extends ComposantSimple {
 		
 	}
 
+
+
 	@Override
-	public void recevoir(String msg, PortFourni pf) {
+	public void recevoir(Object msg, PortFourni prComp) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -16,9 +16,9 @@ public class RPC extends Connecteur{
 	@Override
 	public void recevoir(Object o, RoleFrom rf) {
 		
-		System.out.println("Message "+ (String)o +" reçut sur le port "+ rf.getName());
+		System.out.println("Message "+ (String)o +" recu sur le port "+ rf.getName());
 		/*
-		Traitement avec la glue quand on le reçoit
+		Traitement avec la glue quand on le reï¿½oit
 		*/
 		envoyer(o,rto.get(0));
 	}

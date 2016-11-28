@@ -131,7 +131,7 @@ public abstract class Configuration extends ComposantG implements Observer{
 			}
 		
 		}
-		System.out.println("Element introuvable "+n);
+
 		return null;
 		
 	}
@@ -142,7 +142,7 @@ public abstract class Configuration extends ComposantG implements Observer{
 			}
 		
 		}
-		System.out.println("Element introuvable "+n);
+	
 		return null;
 		
 	}
@@ -152,6 +152,11 @@ public abstract class Configuration extends ComposantG implements Observer{
 	
 	public abstract void envoyer(Object msg,PortFourni pf);
 	public abstract void envoyer(Object msg,PortRequis pr);
+	public abstract void recevoir(Object msg, m2.composant.PortRequis prComp);
+	public abstract void recevoir(Object msg, m2.composant.PortFourni prComp);
+		
+		
+	
 
 
 	

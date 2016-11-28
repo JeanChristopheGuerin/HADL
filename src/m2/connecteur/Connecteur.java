@@ -21,7 +21,7 @@ public abstract class Connecteur extends ComposantG {
 			}
 		
 		}
-		System.out.println("Element introuvable");
+
 		return null;
 		
 	}
@@ -32,7 +32,7 @@ public abstract class Connecteur extends ComposantG {
 			}
 		
 		}
-		System.out.println("Element introuvable");
+
 		return null;
 		
 	}

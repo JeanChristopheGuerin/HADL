@@ -51,6 +51,13 @@ public class Serveur extends Configuration{
 		ServeurConnectionManagerBind SCMB = new ServeurConnectionManagerBind(pfournis.get(0),((ComposantSimple) compos.get(0)).getPortFourni("ExternalSocketSecurityRequest"), prequis.get(0),((ComposantSimple) compos.get(0)).getPortRequis("ExternalSocketSecurityResponse"));	
 		this.bindings.add(SCMB);
 		
+		SQLRequestTODatabase SQLTDB = new SQLRequestTODatabase(((ComposantSimple) compos.get(1)).getPortFourni("QueryInterrogationRequest"),((ComposantSimple) compos.get(1)).getPortRequis("QueryInterrogationResponse"),((Connecteur) connects.get(1)).getRoleFrom("Called2SQLRequest"),((Connecteur) connects.get(1)).getRoleTo("Caller2SQLRequest"));
+		SQLRequestTOConnectionManager SQLTCM = new SQLRequestTOConnectionManager(((ComposantSimple) compos.get(0)).getPortFourni("DBQueryRequest"),((ComposantSimple) compos.get(0)).getPortRequis("DBQueryResponse"),((Connecteur) connects.get(1)).getRoleFrom("CalledSQLRequest"),((Connecteur) connects.get(1)).getRoleTo("CallerSQLRequest"));
+		this.attachements.add(SQLTDB);
+		this.attachements.add(SQLTCM);
+		
+		//SQLRequestTODatabase SQL = new SQLRequestTODatabase(((ComposantSimple) compos.get(1)).getPortFourni("QueryInterrogationRequest"),((ComposantSimple) compos.get(1)).getPortRequis("QueryInterrogationResponse"),((Connecteur) connects.get(1)).getRoleFrom("Called"),((Connecteur) connects.get(1)).getRoleTo("Caller"));
+
 		
 	}
 
@@ -71,9 +78,9 @@ public class Serveur extends Configuration{
 			for(Attachement each : this.attachements){
 				if(each.getPortF() != null){
 					if(each.getPortF().getName() == nomPort){
-						
-						System.out.println("envoi "+msg +" au connecteur"+ each.nom);
+	
 						rolef = each.getRoleFrom();
+						
 					}
 				}
 			}
@@ -82,8 +89,11 @@ public class Serveur extends Configuration{
 			if (rolef == null)
 			for(Binding each: this.bindings){
 				if(each.getPortRComp().getName() == nomPort){
+					
 					portFConf = each.getPortF();
-				}else if(each.getPortRComp().getName() == nomPort){
+					
+				}else if(each.getPortFComp().getName() == nomPort){
+					
 					portRConf = each.getPortR();
 				}
 			}
@@ -94,7 +104,7 @@ public class Serveur extends Configuration{
 				
 				for(Connecteur each : this.connects){
 					if (each.getRoleFrom(rolef.getName())!=null){
-						
+						System.out.println("envoi "+msg +" au connecteur"+ each.nom);
 						each.recevoir(msg, rolef);
 						
 					}
@@ -102,7 +112,9 @@ public class Serveur extends Configuration{
 			}
 			//Vers le port fourni d'une configuration
 			else if(portFConf != null){
+				
 				for(Configuration each : this.conf){
+					
 					if (each.getPortFourni(portFConf.getName()) != null){
 						each.recevoir(msg, portFConf);
 					}
@@ -110,14 +122,15 @@ public class Serveur extends Configuration{
 			}
 			//Vers le port requis d'une configuration
 			else if(portRConf != null){
+				
 				for(Configuration each : this.conf){
-					if (each.getPortFourni(portRConf.getName()) != null){
+					if (each.getPortRequis(portRConf.getName()) != null){
 						each.recevoir(msg, portRConf);
 					}
 				}
 			}
 			else{
-				System.out.println("Probleme envoie vers port qui n'est relié à rien ");
+				System.out.println("Probleme envoie vers port qui n'est reliï¿½ ï¿½ rien ");
 			}
 			
 		/////////////////////////////// Un connecteur notifie l'observer	
@@ -125,10 +138,13 @@ public class Serveur extends Configuration{
 			
 			m2.composant.PortRequis portR = null;
 			m2.configuration.PortRequis portRConf = null;
+			
 			///On regarde si c'est vers un composant simple
 			for(Attachement each : this.attachements){
-				if(each.getPortF() != null){
-					if(each.getPortF().getName() == nomPort){
+				if(each.getRoleTo() != null){
+					
+					if(each.getRoleTo().getName() == nomPort){
+						
 						portR = each.getPortR();
 					}
 				}
@@ -150,8 +166,10 @@ public class Serveur extends Configuration{
 			}
 			
 			if (portR != null){
+				
 				for(ComposantSimple each : this.compos){
 					if (each.getPortRequis(portR.getName())!=null){
+						
 						each.recevoir(msg, portR);
 					}
 				}
@@ -162,7 +180,7 @@ public class Serveur extends Configuration{
 					}
 				}
 			}else{
-				System.out.println("Probleme envoie vers port qui n'est relié à rien");
+				System.out.println("Probleme envoie vers port qui n'est reliï¿½ ï¿½ rien");
 			}
 			
 		/////////////////////////////// Une configuration notifie l'observer	
@@ -173,7 +191,7 @@ public class Serveur extends Configuration{
 			m2.configuration.PortFourni pfConf = null;
 			m2.configuration.PortRequis prConf = null;
 			
-			////On regarde si ça va vers un comosant
+			////On regarde si ï¿½a va vers un comosant
 			for(Binding each: this.bindings){
 				if(each.getPortF().getName() == nomPort){
 					pf = each.getPortFComp();
@@ -194,7 +212,7 @@ public class Serveur extends Configuration{
 					}
 				}
 			}
-			////Sinon ça va vers une configuration
+			////Sinon ï¿½a va vers une configuration
 			if (pf == null && pr == null){
 				for(Binding each : this.bindings){
 					if(each.getPortF().getName() == nomPort){
@@ -224,7 +242,25 @@ public class Serveur extends Configuration{
 
 	@Override
 	public void recevoir(Object msg, PortRequis pr) {
-		System.out.println("Message "+ (String)msg +" reçut sur "+this.getNom()+" sur le port "+ pr.getName());
+		System.out.println("Message "+ (String)msg +" recu sur "+this.getNom()+" sur le port "+ pr.getName());
+		
+		//On sait sur quel port envoyer le msg pour le server
+		m2.composant.PortFourni pfComp = null;
+		for(Binding each : this.bindings){
+			
+			if(each.getPortF().getName() == "ExternalSocketSecurityCheckRequest"){
+				pfComp = each.getPortFComp();
+				
+			}
+		}
+		
+		for(ComposantSimple each : this.compos){
+			
+			if(each.getPortFourni(pfComp.getName()) != null){
+				System.out.println(this.nom+" sending "+ msg +" to " +pfComp.getName());
+				each.recevoir(msg, pfComp);
+			}
+		}
 		
 	}
 
@@ -240,12 +276,48 @@ public class Serveur extends Configuration{
 
 	@Override
 	public void recevoir(Object msg, PortFourni pf) {
-		System.out.println("Message "+ (String)msg +" reçut sur "+this.getNom()+" sur le port "+ pf.getName());
+		System.out.println("Message "+ (String)msg +" recu sur "+this.getNom()+" sur le port "+ pf.getName());
+		
+		//On sait sur quel port envoyer le msg pour le server
+				m2.composant.PortRequis prComp = null;
+				for(Binding each : this.bindings){
+					
+					if(each.getPortR().getName() == "ExternalSocketSecurityCheckRequest"){
+						prComp = each.getPortRComp();
+					}
+				}
+				
+				for(ComposantSimple each : this.compos){
+					
+					if(each.getPortRequis(prComp.getName()) != null){
+						System.out.println(this.nom+" sending "+ msg +" to " +prComp.getName());
+						
+						//each.recevoir(msg, prComp);
+					}
+				}
 		
 	}
 
 	@Override
 	public void envoyer(Object msg, PortRequis pr) {
+		List<Object> res = new ArrayList<Object>();
+		res.add(pr.getName());
+		res.add(msg);
+		notifyObservers(res);
+		
+	}
+
+	@Override
+	public void recevoir(Object msg, m2.composant.PortRequis pr) {
+		if(pr.getName()=="ExternalSocketSecurityCheckResponse"){
+			envoyer(msg,this.prequis.get(1));
+			System.out.println("Reception de" + (String)msg);
+		}
+		
+	}
+
+	@Override
+	public void recevoir(Object msg, m2.composant.PortFourni portFConf) {
 		// TODO Auto-generated method stub
 		
 	}

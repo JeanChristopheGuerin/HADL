@@ -93,7 +93,7 @@ public class ServeurG extends Configuration{
 				}
 			}
 			else{
-				System.out.println("Probleme envoie vers port qui n'est relié à rien ");
+				System.out.println("Probleme envoie vers port qui n'est reliï¿½ ï¿½ rien ");
 			}
 			
 		/////////////////////////////// Un connecteur notifie l'observer	
@@ -138,7 +138,7 @@ public class ServeurG extends Configuration{
 					}
 				}
 			}else{
-				System.out.println("Probleme envoie vers port qui n'est relié à rien");
+				System.out.println("Probleme envoie vers port qui n'est reliï¿½ ï¿½ rien");
 			}
 			
 		/////////////////////////////// Une configuration notifie l'observer	
@@ -149,7 +149,7 @@ public class ServeurG extends Configuration{
 			m2.configuration.PortFourni pfConf = null;
 			m2.configuration.PortRequis prConf = null;
 			
-			////On regarde si ça va vers un comosant
+			////On regarde si ï¿½a va vers un comosant
 			for(Binding each: this.bindings){
 				if(each.getPortF().getName() == nomPort){
 					pf = each.getPortFComp();
@@ -170,7 +170,7 @@ public class ServeurG extends Configuration{
 					}
 				}
 			}
-			////Sinon ça va vers une configuration
+			////Sinon ï¿½a va vers une configuration
 			if (pf == null && pr == null){
 				for(Binding each : this.bindings){
 					if(each.getPortF().getName() == nomPort){
@@ -200,22 +200,22 @@ public class ServeurG extends Configuration{
 
 	@Override
 	public void recevoir(Object msg, PortRequis pr) {
-		System.out.println("Message "+ (String)msg +" reçut sur "+this.getNom()+" sur le port "+ pr.getName());
+		System.out.println("Message "+ (String)msg +" recu sur "+this.getNom()+" sur le port "+ pr.getName());
 		
 		//On sait sur quel port envoyer le msg pour le server
-		m2.configuration.PortRequis prComp = null;
+		m2.configuration.PortRequis prConf = null;
 		for(Binding each : this.bindings){
 			
 			if(each.getPortR().getName() == "Msg_Server_Response"){
-				prComp = each.getPortRConf2();
+				prConf = each.getPortRConf2();
 			}
 		}
 		
 		for(Configuration each : this.conf){
 			
-			if(each.getPortRequis(prComp.getName()) != null){
-				System.out.println(this.nom+" sending "+ msg +" to " +prComp.getName());
-				each.recevoir(msg, prComp);
+			if(each.getPortRequis(prConf.getName()) != null){
+				System.out.println(this.nom+" sending "+ msg +" to " +prConf.getName());
+				each.recevoir(msg, prConf);
 			}
 		}
 		
@@ -235,6 +235,19 @@ public class ServeurG extends Configuration{
 	@Override
 	public void envoyer(Object msg, PortRequis pr) {
 		
+		
+	}
+
+	@Override
+	public void recevoir(Object msg, m2.composant.PortRequis pr) {
+		System.out.println("Message "+ (String)msg +" recu sur "+this.getNom()+" sur le port "+ pr.getName());
+		
+		
+	}
+
+	@Override
+	public void recevoir(Object msg, m2.composant.PortFourni portFConf) {
+		// TODO Auto-generated method stub
 		
 	}
 	

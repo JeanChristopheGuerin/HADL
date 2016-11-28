@@ -1,9 +1,9 @@
 package m1.securityManager;
 
-import m2.composant.PortRequis;
+import m2.composant.PortFourni;
 
 
-public class SecurityAuthentification extends PortRequis{
+public class SecurityAuthentification extends PortFourni{
 
 	public SecurityAuthentification() {
 		super("SecurityAuthentification");
